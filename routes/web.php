@@ -292,7 +292,7 @@ Route::get('/setup-mockup', function () {
     ]);
 });
 
-Route::get('/setup-mockup', function () {
+Route::get('/optimize-mockup', function () {
     
     // 2. Optimize the application cache
     Artisan::call('optimize');
