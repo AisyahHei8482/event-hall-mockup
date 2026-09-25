@@ -304,7 +304,15 @@ Route::get('/optimize-mockup', function () {
     ]);
 });
 
-Route::get('/init-storage', function () {
-    Artisan::call('storage:link');
-    return 'Storage symbolic link created successfully!';
+Route::get('/debug-storage', function () {
+    return response()->json([
+        'storage_path' => storage_path('app/public'),
+        'public_storage' => public_path('storage'),
+        'public_storage_exists' => file_exists(public_path('storage')),
+        'public_storage_is_link' => is_link(public_path('storage')),
+        'target_exists' => file_exists(
+            storage_path('app/public/halls/ajscWkSAKROTVeLEtDfoximkXWlOP0RqTOmb0AMH.jpg')
+        ),
+        'target_path' => storage_path('app/public/halls/ajscWkSAKROTVeLEtDfoximkXWlOP0RqTOmb0AMH.jpg'),
+    ]);
 });
