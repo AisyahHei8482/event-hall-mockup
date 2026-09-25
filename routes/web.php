@@ -276,7 +276,7 @@ Route::middleware(['auth'])->prefix('customer')->name('customer.')->group(functi
 Route::get('/q/{token}', [CustomerQuotationController::class, 'show'])->name('customer.quotation.show');
 Route::post('/q/{token}', [CustomerQuotationController::class, 'submit'])->name('customer.quotation.submit');
 
-//artisan
+//artisan 
 Route::get('/setup-mockup', function () {
     // 1. Run migrations and seeders together
     // Note: --force is required because Wasmer runs in production mode
