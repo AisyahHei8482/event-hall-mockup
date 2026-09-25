@@ -51,6 +51,7 @@ use App\Http\Controllers\Management\BookingManagementController;
 use App\Http\Controllers\Management\ReportController;
 use App\Http\Controllers\Management\StaffController as ManagementStaffController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 // ── Event Hall Standalone Domain ──────────────────────────────────────────────
 if (env('EVENT_HALL_DEMO_MODE', false) && env('EVENT_HALL_DOMAIN')) {
@@ -275,3 +276,35 @@ Route::middleware(['auth'])->prefix('customer')->name('customer.')->group(functi
 Route::get('/q/{token}', [CustomerQuotationController::class, 'show'])->name('customer.quotation.show');
 Route::post('/q/{token}', [CustomerQuotationController::class, 'submit'])->name('customer.quotation.submit');
 
+//artisan
+Route::get('/setup-mockup', function () {
+    // 1. Run migrations and seeders together
+    // Note: --force is required because Wasmer runs in production mode
+    Artisan::call('migrate:fresh', ['--seed' => true, '--force' => true]);
+    
+    // 2. Optimize the application cache
+    Artisan::call('optimize');
+
+    return response()->json([
+        'status' => 'success',
+        'message' => 'Migration, seeding, and optimization completed!',
+        'output' => Artisan::output()
+    ]);
+});
+
+Route::get('/setup-mockup', function () {
+    
+    // 2. Optimize the application cache
+    Artisan::call('optimize');
+
+    return response()->json([
+        'status' => 'success',
+        'message' => 'Optimization completed!',
+        'output' => Artisan::output()
+    ]);
+});
+
+Route::get('/init-storage', function () {
+    Artisan::call('storage:link');
+    return 'Storage symbolic link created successfully!';
+});
