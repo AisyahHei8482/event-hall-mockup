@@ -306,13 +306,26 @@ Route::get('/optimize-mockup', function () {
 
 Route::get('/debug-storage', function () {
     return response()->json([
-        'storage_path' => storage_path('app/public'),
-        'public_storage' => public_path('storage'),
-        'public_storage_exists' => file_exists(public_path('storage')),
-        'public_storage_is_link' => is_link(public_path('storage')),
-        'target_exists' => file_exists(
-            storage_path('app/public/halls/ajscWkSAKROTVeLEtDfoximkXWlOP0RqTOmb0AMH.jpg')
-        ),
-        'target_path' => storage_path('app/public/halls/ajscWkSAKROTVeLEtDfoximkXWlOP0RqTOmb0AMH.jpg'),
+        'app_exists' => is_dir('/app'),
+        'public_exists' => is_dir('/app/public'),
+        'storage_exists' => is_dir('/app/storage'),
+        'storage_app_exists' => is_dir('/app/storage/app'),
+        'storage_public_exists' => is_dir('/app/storage/app/public'),
+
+        'app_contents' => is_dir('/app')
+            ? scandir('/app')
+            : null,
+
+        'storage_contents' => is_dir('/app/storage')
+            ? scandir('/app/storage')
+            : null,
+
+        'storage_app_contents' => is_dir('/app/storage/app')
+            ? scandir('/app/storage/app')
+            : null,
+
+        'storage_public_contents' => is_dir('/app/storage/app/public')
+            ? scandir('/app/storage/app/public')
+            : null,
     ]);
 });
