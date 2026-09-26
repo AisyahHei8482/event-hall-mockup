@@ -11,16 +11,10 @@ env:
 volumes:
 - name: laravel-uploads
   mount: /app/storage/app/public
-jobs:
-- name: after_deploy
-  trigger: post-deployment
-  action:
-    execute:
-      command: php artisan storage:link
 annotations:
   anybuild.run/config:
     commands:
-      install: ''
+      install: 'php artisan storage:link'
     composer_build_script: post-update-cmd
     composer_enable: false
     name: out
