@@ -5,6 +5,11 @@ owner: aisyahhei8482
 package: .
 env:
   PHPIX_PHP_THREADS: '4'
+
+locality:
+  regions:
+    - fr-roub1
+    
 volumes:
 - name: laravel-uploads
   mount: /app/storage/app/public
