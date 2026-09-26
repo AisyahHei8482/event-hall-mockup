@@ -11,10 +11,12 @@ env:
 volumes:
 - name: laravel-uploads
   mount: /app/storage/app/public
+- name: laravel-uploads
+  mount: /app/public/storage
 annotations:
   anybuild.run/config:
     commands:
-      install: php artisan storage:link --relative --force
+      install: ''
     composer_build_script: post-update-cmd
     composer_enable: false
     name: out
