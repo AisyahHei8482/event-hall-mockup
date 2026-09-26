@@ -3,7 +3,7 @@
 @section('page_title', 'Booking ' . $booking->booking_number)
 
 @section('content')
-<div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+<div class="flex flex-col-reverse xl:grid xl:grid-cols-3 gap-6">
 
     <!-- Main -->
     <div class="xl:col-span-2 space-y-6">
@@ -58,13 +58,13 @@
         <x-card class="p-6 border-slate-100 shadow-sm">
             <h3 class="text-sm font-bold text-slate-900 uppercase tracking-widest mb-4">Financial Summary</h3>
             <dl class="space-y-3 text-sm">
-                <div class="flex justify-between items-center"><dt class="font-bold text-slate-500">Subtotal</dt><dd class="font-black text-slate-900">RM {{ number_format($booking->subtotal,2) }}</dd></div>
-                @if($booking->addons_total > 0)<div class="flex justify-between items-center"><dt class="font-bold text-slate-500">Add-ons</dt><dd class="font-black text-slate-900">RM {{ number_format($booking->addons_total,2) }}</dd></div>@endif
-                @if($booking->discount_amount > 0)<div class="flex justify-between items-center"><dt class="font-bold text-emerald-600">Discount</dt><dd class="font-black text-emerald-600">−RM {{ number_format($booking->discount_amount,2) }}</dd></div>@endif
-                <div class="flex justify-between items-center pt-3 border-t border-slate-100"><dt class="font-black text-slate-900 uppercase tracking-widest">Total</dt><dd class="font-black text-2xl text-brand-600">RM {{ number_format($booking->total_price,2) }}</dd></div>
-                <div class="flex justify-between items-center mt-4"><dt class="font-bold text-slate-500">Deposit</dt><dd class="font-black text-amber-600">RM {{ number_format($booking->deposit_amount,2) }}</dd></div>
-                <div class="flex justify-between items-center"><dt class="font-bold text-slate-500">Deposit Paid</dt><dd class="font-black text-emerald-600">RM {{ number_format($booking->deposit_paid ?? 0,2) }}</dd></div>
-                <div class="flex justify-between items-center pt-3 border-t border-slate-100"><dt class="font-black text-slate-900 uppercase tracking-widest">Balance Due</dt><dd class="font-black text-xl text-slate-900">RM {{ number_format(max(0, $booking->total_price - ($booking->deposit_paid ?? 0)),2) }}</dd></div>
+                <div class="flex justify-between items-start gap-4"><dt class="font-bold text-slate-500">Subtotal</dt><dd class="font-black text-slate-900 whitespace-nowrap shrink-0">RM {{ number_format($booking->subtotal,2) }}</dd></div>
+                @if($booking->addons_total > 0)<div class="flex justify-between items-start gap-4"><dt class="font-bold text-slate-500">Add-ons</dt><dd class="font-black text-slate-900 whitespace-nowrap shrink-0">RM {{ number_format($booking->addons_total,2) }}</dd></div>@endif
+                @if($booking->discount_amount > 0)<div class="flex justify-between items-start gap-4"><dt class="font-bold text-emerald-600">Discount</dt><dd class="font-black text-emerald-600 whitespace-nowrap shrink-0">−RM {{ number_format($booking->discount_amount,2) }}</dd></div>@endif
+                <div class="flex justify-between items-start gap-4 pt-3 border-t border-slate-100"><dt class="font-black text-slate-900 uppercase tracking-widest mt-1">Total</dt><dd class="font-black text-2xl text-brand-600 whitespace-nowrap shrink-0">RM {{ number_format($booking->total_price,2) }}</dd></div>
+                <div class="flex justify-between items-start gap-4 mt-4"><dt class="font-bold text-slate-500">Deposit</dt><dd class="font-black text-amber-600 whitespace-nowrap shrink-0">RM {{ number_format($booking->deposit_amount,2) }}</dd></div>
+                <div class="flex justify-between items-start gap-4"><dt class="font-bold text-slate-500">Deposit Paid</dt><dd class="font-black text-emerald-600 whitespace-nowrap shrink-0">RM {{ number_format($booking->deposit_paid ?? 0,2) }}</dd></div>
+                <div class="flex justify-between items-start gap-4 pt-3 border-t border-slate-100"><dt class="font-black text-slate-900 uppercase tracking-widest mt-1">Balance Due</dt><dd class="font-black text-xl text-slate-900 whitespace-nowrap shrink-0">RM {{ number_format(max(0, $booking->total_price - ($booking->deposit_paid ?? 0)),2) }}</dd></div>
             </dl>
         </x-card>
 
@@ -74,9 +74,9 @@
             <h3 class="text-sm font-bold text-slate-900 uppercase tracking-widest mb-4">Add-ons</h3>
             <div class="space-y-3">
                 @foreach($booking->addons as $addon)
-                <div class="flex justify-between items-center text-sm">
-                    <span class="font-bold text-slate-700">{{ $addon->name }} × {{ $addon->pivot->quantity }}</span>
-                    <span class="font-black text-slate-900">RM {{ number_format($addon->pivot->price_at_booking * $addon->pivot->quantity,2) }}</span>
+                <div class="flex justify-between items-start gap-4 text-sm">
+                    <span class="font-bold text-slate-700 leading-snug">{{ $addon->name }} &times; {{ $addon->pivot->quantity }}</span>
+                    <span class="font-black text-slate-900 whitespace-nowrap shrink-0">RM {{ number_format($addon->pivot->price_at_booking * $addon->pivot->quantity,2) }}</span>
                 </div>
                 @endforeach
             </div>
