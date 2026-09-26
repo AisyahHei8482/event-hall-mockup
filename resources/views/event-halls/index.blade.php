@@ -38,18 +38,18 @@
         <x-card class="p-6 sm:p-8 shadow-xl border-slate-200/60 backdrop-blur-md bg-white/95">
             <form method="GET" class="flex flex-col sm:flex-row flex-wrap gap-5 items-end">
                 <!-- Franchise filter removed -->
-                <div class="flex-1 min-w-[150px]">
+                <div class="flex-1 w-full sm:w-auto min-w-[150px]">
                     <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Hall Type</label>
-                    <x-select name="type">
+                    <x-select name="type" class="w-full">
                         <option value="">All Types</option>
                         @foreach($hallTypes as $type)
                         <option value="{{ $type }}" @selected(request('type')===$type)>{{ $type }}</option>
                         @endforeach
                     </x-select>
                 </div>
-                <div class="flex-1 min-w-[120px]">
+                <div class="flex-1 w-full sm:w-auto min-w-[120px]">
                     <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Min Capacity</label>
-                    <x-input type="number" name="capacity" value="{{ request('capacity') }}" min="1" placeholder="e.g. 100" />
+                    <x-input type="number" name="capacity" value="{{ request('capacity') }}" min="1" placeholder="e.g. 100" class="w-full" />
                 </div>
                 <div class="flex gap-3 w-full sm:w-auto">
                     <x-button type="submit" variant="primary" class="flex-1 sm:flex-none">
@@ -74,6 +74,10 @@
             <div class="flex items-center gap-3 mb-6">
                 @if($franchise->logo)
                 <img src="{{ asset('media/'.$franchise->logo) }}" class="w-10 h-10 rounded-xl object-cover">
+                @else
+                <div class="w-10 h-10 rounded-xl bg-slate-200 flex items-center justify-center text-slate-400">
+                    <i class="fa-solid fa-building"></i>
+                </div>
                 @endif
                 <div>
                     <h2 class="text-xl font-bold text-slate-900">{{ $franchise->name }}</h2>

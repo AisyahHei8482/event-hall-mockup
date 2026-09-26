@@ -19,7 +19,7 @@
             Event Venue Booking Platform
         </span>
         <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-tight mb-8 max-w-4xl">
-            Where Unforgettable <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-orange-300">Moments</span> Begin
+            Where Unforgettable <span class="text-brand-400">Events</span> Begin
         </h1>
         <p class="text-lg md:text-xl text-slate-300 font-medium mb-10 max-w-2xl leading-relaxed">
             Discover our premium event spaces designed for weddings, corporate galas, and grand celebrations.
