@@ -3,13 +3,11 @@ name: event-hall-mockup
 app_id: da_2l9IzteUYVo6
 owner: aisyahhei8482
 package: .
-env:
-  PHPIX_PHP_THREADS: '4'
-
 locality:
   regions:
-    - fr-roub1
-    
+  - fr-roub1
+env:
+  PHPIX_PHP_THREADS: '4'
 volumes:
 - name: laravel-uploads
   mount: /app/storage/app/public
@@ -18,9 +16,12 @@ jobs:
   trigger: post-deployment
   action:
     execute:
-      command: after_deploy
+      command: php artisan storage:link
 annotations:
   anybuild.run/config:
+    commands:
+      install: ''
+    composer_build_script: post-update-cmd
     composer_enable: false
     name: out
     node_build_command: npm run build
@@ -31,9 +32,6 @@ annotations:
     php_framework: laravel
     php_public_dir: public
     phpix: true
-    commands:
-      install: ''
-    composer_build_script: post-update-cmd
   anybuild.run/provider: laravel
   anybuild.run/version: 0.29.0
   wasmer.io/version: 7.4.2

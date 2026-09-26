@@ -320,3 +320,15 @@ Route::get('/debug-storage', function () {
             : null,
     ]);
 });
+
+Route::get('/debug-storage-link', function () {
+    return response()->json([
+        'public_storage' => public_path('storage'),
+        'exists' => file_exists(public_path('storage')),
+        'is_link' => is_link(public_path('storage')),
+        'target' => is_link(public_path('storage'))
+            ? readlink(public_path('storage'))
+            : null,
+        'expected' => storage_path('app/public'),
+    ]);
+});
