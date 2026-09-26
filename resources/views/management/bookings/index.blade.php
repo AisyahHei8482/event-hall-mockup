@@ -15,31 +15,31 @@
         <!-- Filters -->
         <div class="flex-1 w-full">
             <x-card class="p-6 border-slate-100 bg-white shadow-sm h-full">
-                <form method="GET" class="flex flex-wrap gap-4 items-end">
-                    <div class="flex-1 min-w-[200px]">
+                <form method="GET" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
+                    <div class="sm:col-span-2 lg:col-span-1">
                         <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Search</label>
-                        <x-input type="text" name="search" value="{{ request('search') }}" placeholder="Name, email, booking#..." class="bg-slate-50" />
+                        <x-input type="text" name="search" value="{{ request('search') }}" placeholder="Name, email, booking#..." class="bg-slate-50 w-full" />
                     </div>
-                    <div class="w-48">
+                    <div>
                         <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Status</label>
-                        <x-select name="status" class="bg-slate-50">
+                        <x-select name="status" class="bg-slate-50 w-full">
                             <option value="">All</option>
                             @foreach(['pending','confirmed','checked_in','completed','cancelled'] as $s)
                             <option value="{{ $s }}" @selected(request('status')===$s)>{{ ucfirst(str_replace('_', ' ', $s)) }}</option>
                             @endforeach
                         </x-select>
                     </div>
-                    <div class="w-40">
+                    <div>
                         <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">From</label>
-                        <x-input type="date" name="date_from" value="{{ request('date_from') }}" class="bg-slate-50" />
+                        <x-input type="date" name="date_from" value="{{ request('date_from') }}" class="bg-slate-50 w-full" />
                     </div>
-                    <div class="w-40">
+                    <div>
                         <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">To</label>
-                        <x-input type="date" name="date_to" value="{{ request('date_to') }}" class="bg-slate-50" />
+                        <x-input type="date" name="date_to" value="{{ request('date_to') }}" class="bg-slate-50 w-full" />
                     </div>
-                    <div class="flex gap-2">
-                        <x-button type="submit" variant="primary" class="h-[42px] px-6">Filter</x-button>
-                        <a href="{{ route('management.bookings.index') }}" class="inline-flex items-center justify-center h-[42px] px-4 text-sm font-bold text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition-colors">Clear</a>
+                    <div class="flex gap-2 sm:col-span-2 lg:col-span-1">
+                        <x-button type="submit" variant="primary" class="h-[42px] px-6 flex-1">Filter</x-button>
+                        <a href="{{ route('management.bookings.index') }}" class="inline-flex items-center justify-center h-[42px] px-4 text-sm font-bold text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition-colors flex-1">Clear</a>
                     </div>
                 </form>
             </x-card>

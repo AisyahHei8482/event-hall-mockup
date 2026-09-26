@@ -5,23 +5,23 @@
 @section('content')
 <!-- Filters -->
 <x-card class="p-6 border-slate-100 mb-6 bg-white shadow-sm">
-    <form method="GET" class="flex flex-wrap gap-4 items-end">
-        <div class="flex-1 min-w-[200px]">
+    <form method="GET" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
+        <div class="sm:col-span-2 lg:col-span-2">
             <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Search</label>
-            <x-input type="text" name="search" value="{{ request('search') }}" placeholder="Name, email, quote#..." class="bg-slate-50" />
+            <x-input type="text" name="search" value="{{ request('search') }}" placeholder="Name, email, quote#..." class="bg-slate-50 w-full" />
         </div>
-        <div class="w-48">
+        <div class="sm:col-span-1 lg:col-span-2">
             <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Status</label>
-            <x-select name="status" class="bg-slate-50">
+            <x-select name="status" class="bg-slate-50 w-full">
                 <option value="">All Statuses</option>
                 @foreach(['draft','generated','sent','viewed','accepted','rejected','expired','converted','cancelled'] as $s)
                 <option value="{{ $s }}" @selected(request('status')===$s)>{{ ucfirst($s) }}</option>
                 @endforeach
             </x-select>
         </div>
-        <div class="flex gap-2">
-            <x-button type="submit" variant="primary" class="h-[42px] px-6">Filter</x-button>
-            <a href="{{ route('management.quotations.index') }}" class="inline-flex items-center justify-center h-[42px] px-4 text-sm font-bold text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition-colors">Clear</a>
+        <div class="flex gap-2 sm:col-span-1 lg:col-span-1">
+            <x-button type="submit" variant="primary" class="h-[42px] px-6 flex-1">Filter</x-button>
+            <a href="{{ route('management.quotations.index') }}" class="inline-flex items-center justify-center h-[42px] px-4 text-sm font-bold text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition-colors flex-1">Clear</a>
         </div>
     </form>
 </x-card>

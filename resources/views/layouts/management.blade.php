@@ -49,20 +49,22 @@
             }
             .mobile-card-table thead { display: none; }
             .mobile-card-table tr {
-                margin-bottom: 1rem;
-                border: 1px solid #f1f5f9;
+                margin-bottom: 0.75rem;
+                border: 1px solid #e2e8f0;
                 border-radius: 0.75rem;
                 overflow: hidden;
                 background-color: white;
+                box-shadow: 0 1px 2px rgba(0,0,0,0.05);
             }
             .mobile-card-table td {
                 display: flex !important;
                 justify-content: space-between;
-                align-items: center;
+                align-items: flex-start;
                 text-align: right;
-                padding: 0.75rem 1rem !important;
-                border-bottom: 1px solid #f1f5f9;
+                padding: 0.6rem 0.75rem !important;
+                border-bottom: 1px solid #f8fafc;
                 min-width: 0 !important;
+                gap: 0.5rem;
             }
             .mobile-card-table td:last-child { border-bottom: none; }
             .mobile-card-table td::before {
@@ -71,11 +73,19 @@
                 font-size: 0.65rem;
                 text-transform: uppercase;
                 letter-spacing: 0.05em;
-                color: #94a3b8;
+                color: #64748b;
                 text-align: left;
-                margin-right: 1rem;
+                flex-shrink: 0;
+                width: 35%;
+                margin-top: 0.1rem;
             }
-            .mobile-card-table td > * { text-align: right; }
+            .mobile-card-table td .td-content { 
+                flex-grow: 1; 
+                text-align: right; 
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+            }
             /* Force hidden columns to appear in card view */
             .mobile-card-table .hidden { display: flex !important; }
         }
@@ -219,6 +229,10 @@
                             tr.querySelectorAll('td').forEach((td, index) => {
                                 if (headers[index]) {
                                     td.setAttribute('data-label', headers[index]);
+                                }
+                                if (!td.querySelector('.td-content')) {
+                                    const content = td.innerHTML;
+                                    td.innerHTML = `<div class="td-content">${content}</div>`;
                                 }
                             });
                         });

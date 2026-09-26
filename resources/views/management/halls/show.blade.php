@@ -123,7 +123,7 @@
             <div><label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Full Day Hours</label><x-input type="number" name="full_day_hours" step="0.5" min="0.5" placeholder="e.g. 8" /></div>
             <div><label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Season Start</label><x-input type="date" name="season_start" /></div>
             <div><label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Season End</label><x-input type="date" name="season_end" /></div>
-            <div class="md:col-span-4 flex justify-end mt-2">
+            <div class="col-span-2 md:col-span-4 flex justify-end mt-2">
                 <x-button type="submit" variant="primary" class="shadow-lg shadow-brand-500/20 px-6"><i class="fa-solid fa-plus mr-1"></i> Add Rule</x-button>
             </div>
         </form>
@@ -212,7 +212,7 @@
             <div><label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Start Time</label><x-input type="time" name="start_time" required /></div>
             <div><label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">End Time</label><x-input type="time" name="end_time" required /></div>
             <div><label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Specific Date (optional)</label><x-input type="date" name="specific_date" /></div>
-            <div class="md:col-span-3">
+            <div class="col-span-2 md:col-span-3">
                 <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Days of Week (leave empty for all)</label>
                 <div class="flex flex-wrap gap-2">
                     @foreach(['Mon'=>1,'Tue'=>2,'Wed'=>3,'Thu'=>4,'Fri'=>5,'Sat'=>6,'Sun'=>7] as $day=>$num)
@@ -223,8 +223,8 @@
                     @endforeach
                 </div>
             </div>
-            <div class="md:col-span-4 flex justify-end mt-2">
-                <x-button type="submit" variant="primary" class="shadow-lg shadow-brand-500/20 px-6"><i class="fa-solid fa-plus mr-1"></i> Add Slot</x-button>
+            <div class="col-span-2 md:col-span-1 flex items-end justify-end mt-2">
+                <x-button type="submit" variant="primary" class="shadow-lg shadow-brand-500/20 w-full justify-center"><i class="fa-solid fa-plus mr-1"></i> Add Slot</x-button>
             </div>
         </form>
     </x-card>
@@ -317,7 +317,7 @@
             <div><label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">To Date</label><x-input type="date" name="date_to" required /></div>
             <div><label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Time From</label><x-input type="time" name="time_from" /></div>
             <div><label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Time To</label><x-input type="time" name="time_to" /></div>
-            <div class="md:col-span-4 flex justify-end mt-2">
+            <div class="col-span-2 md:col-span-4 flex justify-end mt-2">
                 <x-button type="submit" variant="primary" class="shadow-lg shadow-brand-500/20 px-6"><i class="fa-solid fa-ban mr-1"></i> Add Blockout</x-button>
             </div>
         </form>
@@ -396,8 +396,8 @@
             <div><label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Category</label><x-input type="text" name="category" placeholder="e.g. Equipment" /></div>
             <div><label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Price (RM) *</label><x-input type="number" name="price" step="0.01" min="0" required /></div>
             <div><label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Unit</label><x-input type="text" name="unit" placeholder="e.g. per event" /></div>
-            <div class="md:col-span-3"><label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Description</label><x-input type="text" name="description" /></div>
-            <div class="flex items-end justify-end mt-2">
+            <div class="col-span-2 md:col-span-3"><label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Description</label><x-input type="text" name="description" /></div>
+            <div class="col-span-2 md:col-span-1 flex items-end justify-end mt-2">
                 <x-button type="submit" variant="primary" class="shadow-lg shadow-brand-500/20 w-full justify-center"><i class="fa-solid fa-plus mr-1"></i> Add</x-button>
             </div>
         </form>
