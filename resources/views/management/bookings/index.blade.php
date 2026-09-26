@@ -3,6 +3,13 @@
 @section('page_title', 'Event Hall Bookings')
 
 @section('content')
+<style>
+@media (max-width: 768px) {
+    .fc .fc-header-toolbar { flex-direction: column !important; gap: 0.75rem; }
+    .fc .fc-toolbar-chunk { display: flex; justify-content: center; width: 100%; }
+    .fc .fc-toolbar-title { font-size: 1.25rem !important; }
+}
+</style>
 <div x-data="bookingManager()">
     <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-6 gap-4">
         <!-- Filters -->

@@ -28,7 +28,7 @@
             <tbody class="divide-y divide-slate-100">
                 @forelse($franchises as $franchise)
                 <tr class="hover:bg-amber-50/30 transition-colors group">
-                    <td class="px-6 py-4">
+                    <td class="px-6 py-4 min-w-[250px] whitespace-nowrap">
                         <div class="flex items-center gap-4">
                             @if($franchise->logo)
                             <img src="{{ asset('media/'.$franchise->logo) }}" class="w-12 h-12 rounded-xl object-cover shadow-sm group-hover:scale-105 transition-transform">

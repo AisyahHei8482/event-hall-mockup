@@ -6,7 +6,7 @@
 
 @section('content')
 <!-- Stats Grid -->
-<div class="grid grid-cols-2 lg:grid-cols-5 gap-5 mb-8">
+<div class="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-5 mb-8">
     @php
     $statCards = [
         ['label' => 'Total Bookings', 'value' => $stats['total_bookings'], 'icon' => 'fa-calendar-check', 'color' => 'blue'],
@@ -24,14 +24,14 @@
     ];
     @endphp
     @foreach($statCards as $card)
-    <x-card class="p-6 border-slate-100 hover:shadow-lg transition-all duration-300">
-        <div class="flex items-center justify-between mb-4">
-            <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">{{ $card['label'] }}</span>
-            <span class="w-10 h-10 rounded-xl flex items-center justify-center {{ $colorMap[$card['color']] }} shadow-lg">
-                <i class="fa-solid {{ $card['icon'] }} text-base"></i>
+    <x-card class="p-3 sm:p-6 border-slate-100 hover:shadow-lg transition-all duration-300 last:col-span-2 lg:last:col-span-1">
+        <div class="flex items-center justify-between mb-2 sm:mb-4">
+            <span class="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-widest leading-tight truncate mr-2">{{ $card['label'] }}</span>
+            <span class="shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl flex items-center justify-center {{ $colorMap[$card['color']] }} shadow-md sm:shadow-lg">
+                <i class="fa-solid {{ $card['icon'] }} text-xs sm:text-base"></i>
             </span>
         </div>
-        <div class="text-4xl font-black text-slate-900 tracking-tight">{{ number_format($card['value']) }}</div>
+        <div class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">{{ number_format($card['value']) }}</div>
     </x-card>
     @endforeach
 </div>
