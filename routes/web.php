@@ -334,7 +334,7 @@ Route::get('/debug-storage-link', function () {
 });
 
 // Serve storage files fallback for Wasmer Edge
-Route::get('/storage/{path}', function ($path) {
+Route::get('/media/{path}', function ($path) {
     $filePath = storage_path('app/public/' . $path);
     
     if (!file_exists($filePath)) {
