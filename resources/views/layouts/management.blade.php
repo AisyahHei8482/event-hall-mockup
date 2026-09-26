@@ -41,14 +41,13 @@
         .sidebar-active { @apply bg-brand-500 text-white shadow-md shadow-brand-500/20; }
         .sidebar-inactive { @apply text-slate-400 hover:bg-white/5 hover:text-white; }
         [x-cloak] { display: none !important; }
-        
         @media (max-width: 768px) {
-            .mobile-card-table, .mobile-card-table tbody, .mobile-card-table tr, .mobile-card-table td {
+            .mobile-card-table, .mobile-card-table tbody, .mobile-card-table tbody tr, .mobile-card-table tbody td {
                 display: block;
                 width: 100%;
             }
             .mobile-card-table thead { display: none; }
-            .mobile-card-table tr {
+            .mobile-card-table tbody tr {
                 margin-bottom: 0.75rem;
                 border: 1px solid #e2e8f0;
                 border-radius: 0.75rem;
@@ -56,7 +55,7 @@
                 background-color: white;
                 box-shadow: 0 1px 2px rgba(0,0,0,0.05);
             }
-            .mobile-card-table td {
+            .mobile-card-table tbody td {
                 display: flex !important;
                 justify-content: space-between;
                 align-items: flex-start;
@@ -66,8 +65,8 @@
                 min-width: 0 !important;
                 gap: 0.5rem;
             }
-            .mobile-card-table td:last-child { border-bottom: none; }
-            .mobile-card-table td::before {
+            .mobile-card-table tbody td:last-child { border-bottom: none; }
+            .mobile-card-table tbody td::before {
                 content: attr(data-label);
                 font-weight: 700;
                 font-size: 0.65rem;
@@ -79,20 +78,41 @@
                 width: 35%;
                 margin-top: 0.1rem;
             }
-            .mobile-card-table td .td-content { 
+            .mobile-card-table tbody td .td-content { 
                 flex-grow: 1; 
                 text-align: right; 
                 display: flex;
                 flex-direction: column;
                 align-items: flex-end;
             }
+            /* tfoot mobile styling */
+            .mobile-card-table tfoot { display: block; width: 100%; margin-top: 1rem; }
+            .mobile-card-table tfoot tr { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f1f5f9; padding: 0.5rem 0; }
+            .mobile-card-table tfoot td { display: block; border: none; padding: 0; }
+            .mobile-card-table tfoot td:first-child { font-weight: 600; text-align: left; }
+            .mobile-card-table tfoot td:last-child { text-align: right; }
+            .mobile-card-table tfoot tr.bg-slate-50 { background: transparent; padding-top: 1rem; border-top: 2px solid #e2e8f0; }
             /* Force hidden columns to appear in card view */
             .mobile-card-table .hidden { display: flex !important; }
+
+            .mobile-card-table-wrapper {
+                background: transparent !important;
+                border: none !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+            }
+            .mobile-card-table-wrapper > div:last-child:not(.overflow-x-auto) {
+                border-radius: 0.75rem;
+                margin-top: 0.5rem;
+                background-color: white !important;
+                box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+                border: 1px solid #e2e8f0 !important;
+            }
         }
     </style>
     @stack('styles')
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased font-sans flex h-screen overflow-hidden" x-data="{ sidebarOpen: window.innerWidth >= 1024 }">
+<body class="bg-slate-50 text-slate-800 antialiased font-sans flex h-[100dvh] lg:h-screen overflow-hidden" x-data="{ sidebarOpen: window.innerWidth >= 1024 }">
 
     <!-- Mobile Sidebar Backdrop -->
     <div x-show="sidebarOpen" x-transition.opacity 
@@ -173,7 +193,7 @@
     </aside>
 
     <!-- Main Content -->
-    <main class="flex-1 flex flex-col min-h-screen overflow-hidden">
+    <main class="flex-1 flex flex-col min-h-0 overflow-hidden">
         
         <!-- Top Header -->
         <header class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-30">
@@ -223,6 +243,10 @@
                         if (table.classList.contains('mobile-card-table') || table.closest('.fc')) return;
                         
                         table.classList.add('mobile-card-table');
+                        const cardWrapper = table.closest('div.bg-white');
+                        if (cardWrapper && cardWrapper.classList.contains('shadow-sm')) {
+                            cardWrapper.classList.add('mobile-card-table-wrapper');
+                        }
                         const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.innerText.trim());
                         
                         table.querySelectorAll('tbody tr').forEach(tr => {

@@ -3,7 +3,7 @@
 @section('page_title', 'Quotation ' . $quotation->quote_number)
 
 @section('content')
-<div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+<div class="flex flex-col-reverse xl:grid xl:grid-cols-3 gap-6">
 
     <!-- Main Quote Details -->
     <div class="xl:col-span-2 space-y-6">
