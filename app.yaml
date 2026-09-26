@@ -14,7 +14,7 @@ volumes:
 annotations:
   anybuild.run/config:
     commands:
-      install: 'php artisan storage:link'
+      install: php artisan storage:link --relative --force
     composer_build_script: post-update-cmd
     composer_enable: false
     name: out
