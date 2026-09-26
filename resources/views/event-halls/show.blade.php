@@ -8,7 +8,7 @@
     <!-- Hero with cover image -->
     <section class="relative h-[450px] overflow-hidden">
         @if($hall->cover_image)
-        <img src="{{ asset('storage/'.$hall->cover_image) }}" alt="{{ $hall->name }}" class="w-full h-full object-cover">
+        <img src="{{ asset('media/'.$hall->cover_image) }}" alt="{{ $hall->name }}" class="w-full h-full object-cover">
         @else
         <div class="w-full h-full bg-gradient-to-br from-slate-900 to-slate-800"></div>
         @endif
@@ -50,7 +50,7 @@
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                         @foreach($hall->images->take(6) as $img)
                         <div class="relative rounded-xl overflow-hidden aspect-[4/3] group cursor-pointer shadow-sm">
-                            <img src="{{ asset('storage/'.$img->path) }}" alt="{{ $img->caption }}"
+                            <img src="{{ asset('media/'.$img->path) }}" alt="{{ $img->caption }}"
                                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                             <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
                         </div>

@@ -44,7 +44,7 @@
     <x-card class="p-6 border-slate-100 shadow-sm">
         @if($hall->cover_image)
         <div class="relative rounded-2xl overflow-hidden mb-6 aspect-video bg-slate-100 border border-slate-200 shadow-inner group">
-            <img src="{{ asset('storage/'.$hall->cover_image) }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            <img src="{{ asset('media/'.$hall->cover_image) }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         </div>
         @endif
         <dl class="space-y-4 text-sm">

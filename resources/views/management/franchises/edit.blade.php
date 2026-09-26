@@ -49,7 +49,7 @@
                     <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Logo</label>
                     @if($franchise->logo)
                     <div class="mb-3 relative group rounded-xl overflow-hidden w-20 h-20 border border-slate-200 bg-slate-50">
-                        <img src="{{ asset('storage/'.$franchise->logo) }}" class="w-full h-full object-contain p-2">
+                        <img src="{{ asset('media/'.$franchise->logo) }}" class="w-full h-full object-contain p-2">
                         <div class="absolute inset-0 bg-slate-900/10 group-hover:bg-slate-900/0 transition-colors"></div>
                     </div>
                     @endif

@@ -34,7 +34,7 @@
         </div>
         @if($franchise->logo)
         <div class="w-24 h-24 rounded-2xl border border-slate-200 bg-slate-50 p-2 shadow-sm">
-            <img src="{{ asset('storage/'.$franchise->logo) }}" class="w-full h-full object-contain">
+            <img src="{{ asset('media/'.$franchise->logo) }}" class="w-full h-full object-contain">
         </div>
         @endif
         <dl class="space-y-4 text-sm">

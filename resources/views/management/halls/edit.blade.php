@@ -47,7 +47,7 @@
                     <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Cover Image</label>
                     @if($hall->cover_image)
                     <div class="mb-3 relative group rounded-xl overflow-hidden w-32 h-20 border border-slate-200">
-                        <img src="{{ asset('storage/'.$hall->cover_image) }}" class="w-full h-full object-cover">
+                        <img src="{{ asset('media/'.$hall->cover_image) }}" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-slate-900/10 group-hover:bg-slate-900/0 transition-colors"></div>
                     </div>
                     @endif

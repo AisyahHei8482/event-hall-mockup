@@ -73,7 +73,7 @@
         <div class="mb-12">
             <div class="flex items-center gap-3 mb-6">
                 @if($franchise->logo)
-                <img src="{{ asset('storage/'.$franchise->logo) }}" class="w-10 h-10 rounded-xl object-cover">
+                <img src="{{ asset('media/'.$franchise->logo) }}" class="w-10 h-10 rounded-xl object-cover">
                 @endif
                 <div>
                     <h2 class="text-xl font-bold text-slate-900">{{ $franchise->name }}</h2>

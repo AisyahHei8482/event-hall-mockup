@@ -31,7 +31,7 @@
                     <td class="px-6 py-4">
                         <div class="flex items-center gap-4">
                             @if($franchise->logo)
-                            <img src="{{ asset('storage/'.$franchise->logo) }}" class="w-12 h-12 rounded-xl object-cover shadow-sm group-hover:scale-105 transition-transform">
+                            <img src="{{ asset('media/'.$franchise->logo) }}" class="w-12 h-12 rounded-xl object-cover shadow-sm group-hover:scale-105 transition-transform">
                             @else
                             <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
                                 <i class="fa-solid fa-building text-amber-600 text-lg"></i>

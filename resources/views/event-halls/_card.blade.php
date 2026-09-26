@@ -1,7 +1,7 @@
 <x-card class="group flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-slate-100">
     @if($hall->cover_image)
     <div class="h-56 overflow-hidden relative">
-        <img src="{{ asset('storage/'.$hall->cover_image) }}" alt="{{ $hall->name }}"
+        <img src="{{ asset('media/'.$hall->cover_image) }}" alt="{{ $hall->name }}"
              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
         @if($hall->hall_type)
         <div class="absolute top-3 left-3">

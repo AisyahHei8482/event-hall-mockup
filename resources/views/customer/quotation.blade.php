@@ -157,7 +157,7 @@
     <div class="card">
         <div class="section-label">Event Hall</div>
         @if($quotation->eventHall->cover_image)
-        <img src="{{ asset('storage/'.$quotation->eventHall->cover_image) }}" alt="{{ $quotation->eventHall->name }}"
+        <img src="{{ asset('media/'.$quotation->eventHall->cover_image) }}" alt="{{ $quotation->eventHall->name }}"
              style="width:100%;height:180px;object-fit:cover;border-radius:.75rem;margin-bottom:1rem;">
         @endif
         <div style="font-size:1.1rem;font-weight:800;color:#0f172a;">{{ $quotation->eventHall->name }}</div>

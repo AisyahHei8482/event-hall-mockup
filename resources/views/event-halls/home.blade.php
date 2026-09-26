@@ -7,7 +7,7 @@
 <div class="relative bg-slate-900 overflow-hidden">
     <div class="absolute inset-0">
         @if($hall && $hall->cover_image)
-            <img src="{{ asset('storage/'.$hall->cover_image) }}" alt="Hero Background" class="w-full h-full object-cover opacity-40 mix-blend-overlay">
+            <img src="{{ asset('media/'.$hall->cover_image) }}" alt="Hero Background" class="w-full h-full object-cover opacity-40 mix-blend-overlay">
         @else
             <div class="w-full h-full bg-gradient-to-r from-slate-900 to-slate-800 opacity-90"></div>
         @endif
@@ -51,7 +51,7 @@
             <a href="{{ route('event-halls.show', $h) }}" class="group block rounded-3xl bg-white border border-slate-100 shadow-xl shadow-slate-200/40 overflow-hidden hover:shadow-2xl hover:shadow-brand-500/10 transition-all hover:-translate-y-1">
                 <div class="aspect-[4/3] relative overflow-hidden bg-slate-100">
                     @if($h->cover_image)
-                        <img src="{{ asset('storage/'.$h->cover_image) }}" alt="{{ $h->name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <img src="{{ asset('media/'.$h->cover_image) }}" alt="{{ $h->name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                     @else
                         <div class="absolute inset-0 flex items-center justify-center text-slate-300">
                             <i class="fa-regular fa-image text-4xl"></i>

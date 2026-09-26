@@ -7,7 +7,7 @@
     <section class="relative bg-forest-900 pt-24 pb-32 sm:pt-32 sm:pb-40 overflow-hidden">
         <!-- Background Elements -->
         <div class="absolute inset-0">
-            <img src="{{ asset('storage/gallery/facilities-hero.jpg') }}" onerror="this.src='https://images.unsplash.com/photo-1542314831-c6a4d14d2301?auto=format&fit=crop&q=80'" class="w-full h-full object-cover opacity-40 mix-blend-overlay">
+            <img src="{{ asset('media/gallery/facilities-hero.jpg') }}" onerror="this.src='https://images.unsplash.com/photo-1542314831-c6a4d14d2301?auto=format&fit=crop&q=80'" class="w-full h-full object-cover opacity-40 mix-blend-overlay">
             <div class="absolute inset-0 bg-gradient-to-t from-forest-950 via-forest-900/80 to-forest-900/40"></div>
         </div>
 

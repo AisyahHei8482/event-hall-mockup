@@ -19,7 +19,7 @@
         <!-- Cover Image -->
         <div class="relative h-48 bg-slate-100 overflow-hidden shrink-0">
             @if($hall->cover_image)
-            <img src="{{ asset('storage/'.$hall->cover_image) }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <img src="{{ asset('media/'.$hall->cover_image) }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
             @else
             <div class="w-full h-full flex items-center justify-center bg-slate-100">
                 <i class="fa-solid fa-door-open text-5xl text-slate-300"></i>

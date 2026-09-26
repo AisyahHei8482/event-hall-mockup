@@ -55,7 +55,7 @@
                             <input type="hidden" name="event_hall_id" value="{{ $selectedHall->id }}">
                             <div class="flex flex-col sm:flex-row sm:items-center gap-5 bg-slate-50 border border-slate-200 rounded-2xl p-4 mb-4 shadow-sm">
                                 @if($selectedHall->cover_image)
-                                <img src="{{ asset('storage/'.$selectedHall->cover_image) }}" class="w-full sm:w-16 sm:h-16 rounded-xl object-cover shadow-sm">
+                                <img src="{{ asset('media/'.$selectedHall->cover_image) }}" class="w-full sm:w-16 sm:h-16 rounded-xl object-cover shadow-sm">
                                 @endif
                                 <div class="flex-1">
                                     <div class="font-bold text-slate-900 text-xl">{{ $selectedHall->name }}</div>
