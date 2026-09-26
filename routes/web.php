@@ -342,7 +342,7 @@ Route::get('/media/{path}', function ($path) {
     }
     
     $mime = mime_content_type($filePath);
-    return response()->file($filePath, [
-        'Content-Type' => $mime,
-    ]);
+    $content = file_get_contents($filePath);
+    
+    return response($content)->header('Content-Type', $mime);
 })->where('path', '.*');
