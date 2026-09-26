@@ -41,6 +41,44 @@
         .sidebar-active { @apply bg-brand-500 text-white shadow-md shadow-brand-500/20; }
         .sidebar-inactive { @apply text-slate-400 hover:bg-white/5 hover:text-white; }
         [x-cloak] { display: none !important; }
+        
+        @media (max-width: 768px) {
+            .mobile-card-table, .mobile-card-table tbody, .mobile-card-table tr, .mobile-card-table td {
+                display: block;
+                width: 100%;
+            }
+            .mobile-card-table thead { display: none; }
+            .mobile-card-table tr {
+                margin-bottom: 1rem;
+                border: 1px solid #f1f5f9;
+                border-radius: 0.75rem;
+                overflow: hidden;
+                background-color: white;
+            }
+            .mobile-card-table td {
+                display: flex !important;
+                justify-content: space-between;
+                align-items: center;
+                text-align: right;
+                padding: 0.75rem 1rem !important;
+                border-bottom: 1px solid #f1f5f9;
+                min-width: 0 !important;
+            }
+            .mobile-card-table td:last-child { border-bottom: none; }
+            .mobile-card-table td::before {
+                content: attr(data-label);
+                font-weight: 700;
+                font-size: 0.65rem;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                color: #94a3b8;
+                text-align: left;
+                margin-right: 1rem;
+            }
+            .mobile-card-table td > * { text-align: right; }
+            /* Force hidden columns to appear in card view */
+            .mobile-card-table .hidden { display: flex !important; }
+        }
     </style>
     @stack('styles')
 </head>
@@ -166,5 +204,30 @@
     </main>
 
     @stack('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            function transformTables() {
+                if (window.innerWidth <= 768) {
+                    document.querySelectorAll('table').forEach(table => {
+                        // Skip if it is already transformed or is a calendar/layout table
+                        if (table.classList.contains('mobile-card-table') || table.closest('.fc')) return;
+                        
+                        table.classList.add('mobile-card-table');
+                        const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.innerText.trim());
+                        
+                        table.querySelectorAll('tbody tr').forEach(tr => {
+                            tr.querySelectorAll('td').forEach((td, index) => {
+                                if (headers[index]) {
+                                    td.setAttribute('data-label', headers[index]);
+                                }
+                            });
+                        });
+                    });
+                }
+            }
+            transformTables();
+            window.addEventListener('resize', transformTables);
+        });
+    </script>
 </body>
 </html>
