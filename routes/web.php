@@ -52,6 +52,7 @@ use App\Http\Controllers\Management\ReportController;
 use App\Http\Controllers\Management\StaffController as ManagementStaffController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Storage;
 
 // ── Event Hall Standalone Domain ──────────────────────────────────────────────
 if (env('EVENT_HALL_DEMO_MODE', false) && env('EVENT_HALL_DOMAIN')) {
@@ -305,27 +306,17 @@ Route::get('/optimize-mockup', function () {
 });
 
 Route::get('/debug-storage', function () {
+    $disk = Storage::disk('public');
+
+    $files = $disk->allFiles();
+
     return response()->json([
-        'app_exists' => is_dir('/app'),
-        'public_exists' => is_dir('/app/public'),
-        'storage_exists' => is_dir('/app/storage'),
-        'storage_app_exists' => is_dir('/app/storage/app'),
-        'storage_public_exists' => is_dir('/app/storage/app/public'),
-
-        'app_contents' => is_dir('/app')
-            ? scandir('/app')
-            : null,
-
-        'storage_contents' => is_dir('/app/storage')
-            ? scandir('/app/storage')
-            : null,
-
-        'storage_app_contents' => is_dir('/app/storage/app')
-            ? scandir('/app/storage/app')
-            : null,
-
-        'storage_public_contents' => is_dir('/app/storage/app/public')
-            ? scandir('/app/storage/app/public')
+        'disk_root' => $disk->path(''),
+        'disk_files' => $files,
+        'jpg_exists' => $disk->exists('halls/ajscWkSAKROTVeLEtDfoximkXWlOP0RqTOmb0AMH.jpg'),
+        'jpg_path' => $disk->path('halls/ajscWkSAKROTVeLEtDfoximkXWlOP0RqTOmb0AMH.jpg'),
+        'jpg_size' => $disk->exists('halls/ajscWkSAKROTVeLEtDfoximkXWlOP0RqTOmb0AMH.jpg')
+            ? $disk->size('halls/ajscWkSAKROTVeLEtDfoximkXWlOP0RqTOmb0AMH.jpg')
             : null,
     ]);
 });
